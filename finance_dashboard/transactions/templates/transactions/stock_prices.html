@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Check Stock Prices{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Check Stock Prices</h1>
+
+<form method="post" class="needs-validation" novalidate>
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="symbol" class="form-label">Stock Symbol</label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-chart-line"></i></span>
+            <input type="text" name="symbol" id="symbol" class="form-control" placeholder="e.g., AAPL" required>
+        </div>
+        <div class="invalid-feedback">Please enter a valid stock symbol.</div>
+    </div>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Check Price</button>
+</form>
+
+{% if stocks %}
+    <h2 class="mt-5">Stock Price Results</h2>
+    <ul class="list-group">
+        {% for stock in stocks %}
+            <li class="list-group-item"><strong>{{ stock.symbol }}</strong>: ${{ stock.price }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}
+

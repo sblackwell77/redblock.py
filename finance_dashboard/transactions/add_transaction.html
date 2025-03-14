@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Transaction</title>
+</head>
+<body>
+    <h1>Add New Transaction</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+        </select>
+        <br>
+        <label for="description">Description:</label>
+        <input type="text" name="description" id="description">
+        <br>
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" id="amount">
+        <br>
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date">
+        <br>
+        <button type="submit">Add Transaction</button>
+    </form>
+</body>
+</html>
+

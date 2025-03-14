@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Prices</title>
+</head>
+<body>
+    <h1>Stock Prices</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="symbol">Stock Symbol:</label>
+        <input type="text" name="symbol" id="symbol">
+        <button type="submit">Check Price</button>
+    </form>
+    <ul>
+        {% for stock in stocks %}
+        <li>{{ stock.company_name }} ({{ stock.symbol }}): ${{ stock.price }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Transaction{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Add New Transaction</h1>
+
+<form method="post" class="needs-validation" novalidate>
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-list"></i></span>
+            <select name="category" id="category" class="form-select" required>
+                <option value="">Choose...</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
+        </div>
+        <div class="invalid-feedback">Please choose a category.</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-edit"></i></span>
+            <input type="text" name="description" id="description" class="form-control" required>
+        </div>
+        <div class="invalid-feedback">Please provide a description.</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="amount" class="form-label">Amount</label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+            <input type="number" name="amount" id="amount" class="form-control" step="0.01" required>
+        </div>
+        <div class="invalid-feedback">Please provide a valid amount.</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+            <input type="date" name="date" id="date" class="form-control" required>
+        </div>
+        <div class="invalid-feedback">Please provide a valid date.</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add Transaction</button>
+</form>
+{% endblock %}
+
